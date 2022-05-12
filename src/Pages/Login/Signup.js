@@ -8,7 +8,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 import { useForm } from "react-hook-form";
-import { async } from "@firebase/util";
 
 const Signup = () => {
   const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);

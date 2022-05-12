@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import doctor from "../../assets/images/doctor.png";
-import chair from "../../assets/images/chair.png";
 import AppointmentBanner from "./AppointmentBanner";
 import AvailableAppointments from "./AvailableAppointments";
 
