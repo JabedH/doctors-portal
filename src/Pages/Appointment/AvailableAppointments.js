@@ -12,11 +12,11 @@ const AvailableAppointments = ({ date }) => {
       .then((data) => setServices(data));
   }, []);
   return (
-    <div>
+    <div className="mb-20 ">
       <p className="mt-20 text-xl text-center text-primary">
-        Available Appointments on {format(date, "PP")}
+        Available Appointments on {format(date || new Date(), "PP")}
       </p>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-10">
         {services.map((service) => (
           <Services setTreatment={setTreatment} service={service} />
         ))}
