@@ -6,6 +6,7 @@ import {
 } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Loading from "../Shared/Loading";
 
 const Login = () => {
   const {
@@ -13,15 +14,30 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  // const [signInWithEmailAndPassword, user1, loading1, error1] =
-  //   useSignInWithEmailAndPassword(auth);
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+  // const handleLogin = (event) => {
+  //   event.preventDefault();
+  //   const email = event.target.email.value;
+  //   const password = event.target.password.value;
+  // };
+
+  if (loading || gLoading) {
+    return <Loading />;
+  }
+  let loginError;
+  if (error || gError) {
+    loginError = (
+      <p className="text-red-500 text-center mb-2">
+        {error?.message || gError?.message}
+      </p>
+    );
+  }
+  const onSubmit = (data) => {
+    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
   };
-  const onSubmit = (data) => console.log(data);
   return (
     <div className="flex lg:h-4/5 sm:my-28 justify-center items-center ">
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -30,7 +46,7 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Name</span>
+                <span class="label-text">Email</span>
               </label>
               <input
                 type="email"
@@ -62,7 +78,7 @@ const Login = () => {
             </div>
             <div class="form-control w-full max-w-xs">
               <label class="label">
-                <span class="label-text">Name</span>
+                <span class="label-text">Password</span>
               </label>
               <input
                 type="password"
@@ -93,7 +109,7 @@ const Login = () => {
                 )}
               </label>
             </div>
-
+            {loginError}
             <input
               className="w-full max-w-xs btn text-white"
               type="submit"

@@ -1,7 +1,6 @@
 import React from "react";
 
 const TestimonialInfo = ({ review }) => {
-  console.log(review);
   return (
     <div>
       <div className="card lg:max-w-lg bg-base-100 shadow-xl">
