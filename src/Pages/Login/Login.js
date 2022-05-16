@@ -7,7 +7,7 @@ import {
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
-import useToken from "../../assets/Hooks/useToken";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const {
