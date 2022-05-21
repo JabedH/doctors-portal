@@ -2,21 +2,24 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import {} from "react-day-picker";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
-const MyAppointment = () => {
-  const [Appointments, setAppointments] = useState([]);
+const Mya = () => {
+  const [as, setas] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/booking?patient=${user?.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://hidden-temple-24648.herokuapp.com/booking?patient=${user?.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             // for eating token by 401 and 403
@@ -26,7 +29,7 @@ const MyAppointment = () => {
           }
           return res.json();
         })
-        .then((data) => setAppointments(data));
+        .then((data) => setas(data));
     }
   }, [user]);
   return (
@@ -40,16 +43,32 @@ const MyAppointment = () => {
               <th>Date</th>
               <th>Slot</th>
               <th>treatment</th>
+              <th>Payment</th>
             </tr>
           </thead>
-          {Appointments.map((Appointment, index) => (
+          {as.map((a, index) => (
             <tbody>
               <tr>
                 <th>{index + 1}</th>
-                <td>{Appointment.patientName}</td>
-                <td>{Appointment.date}</td>
-                <td>{Appointment.slot}</td>
-                <td>{Appointment.treatment}</td>
+                <td>{a.patientName}</td>
+                <td>{a.date}</td>
+                <td>{a.slot}</td>
+                <td>{a.treatment}</td>
+                <td>
+                  {a.price && !a.paid && (
+                    <Link to={`/dashboard/payment/${a._id}`}>
+                      {" "}
+                      <button className="btn btn-xs btn-success">
+                        pay
+                      </button>{" "}
+                    </Link>
+                  )}
+                  {a.price && a.paid && (
+                    <p>
+                      <span className="text-green-500 font-bold">Paid</span>
+                    </p>
+                  )}
+                </td>
               </tr>
             </tbody>
           ))}
@@ -59,4 +78,4 @@ const MyAppointment = () => {
   );
 };
 
-export default MyAppointment;
+export default Mya;

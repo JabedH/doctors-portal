@@ -16,6 +16,10 @@ import MyAppointment from "./Pages/Dashboard/MyAppointment";
 import MyReview from "./Pages/Dashboard/MyReview";
 import MyHistory from "./Pages/Dashboard/MyHistory";
 import Allusers from "./Pages/Dashboard/Allusers";
+import ReqAdmin from "./Pages/RequireAuth/ReqAdmin";
+import AddDoctors from "./Pages/Dashboard/AddDoctors";
+import ManageDoctors from "./Pages/Dashboard/ManageDoctors";
+import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   return (
@@ -43,7 +47,31 @@ function App() {
           <Route index element={<MyAppointment />}></Route>
           <Route path="myreview" element={<MyReview />}></Route>
           <Route path="myhistory" element={<MyHistory />}></Route>
-          <Route path="allusers" element={<Allusers />}></Route>
+          <Route path="payment/:id" element={<Payment />}></Route>
+          <Route
+            path="allusers"
+            element={
+              <ReqAdmin>
+                <Allusers />
+              </ReqAdmin>
+            }
+          ></Route>
+          <Route
+            path="adddoctors"
+            element={
+              <ReqAdmin>
+                <AddDoctors />
+              </ReqAdmin>
+            }
+          ></Route>
+          <Route
+            path="managedoctors"
+            element={
+              <ReqAdmin>
+                <ManageDoctors />
+              </ReqAdmin>
+            }
+          ></Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
