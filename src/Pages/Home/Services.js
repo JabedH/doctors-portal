@@ -5,6 +5,7 @@ import whitening from "../../assets/images/whitening.png";
 import treatment from "../../assets/images/treatment.png";
 import ServicesCard from "./ServicesCard";
 import Primarybtn from "../Shared/Navbar/Primarybtn";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   return (
@@ -21,7 +22,7 @@ const Services = () => {
       <div>
         <div className="hero mt-40 ">
           <div className="hero-content flex-col lg:flex-row gap-20">
-            <img className="max-w-sm rounded " src={treatment} />
+            <img className="lg:max-w-sm rounded " src={treatment} />
             <div className="max-w-xl text-left">
               <h1 className="text-5xl font-bold">
                 Exceptional Dental Care, on Your Terms
@@ -34,7 +35,9 @@ const Services = () => {
                 here, content here', making it look like readable English. Many
                 desktop publishing packages and web page
               </p>
-              <Primarybtn> Get Started </Primarybtn>
+              <Link to="/appointment">
+                <Primarybtn> Get Started </Primarybtn>
+              </Link>
             </div>
           </div>
         </div>

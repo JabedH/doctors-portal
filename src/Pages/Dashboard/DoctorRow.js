@@ -22,7 +22,7 @@ const DoctorRow = ({ doctor, index, refetch, setDeleteDoctor }) => {
           for="my-modal-6"
           class="btn btn-xs  btn-error"
         >
-          open modal
+          Delete Doctor
         </label>
       </td>
     </tr>

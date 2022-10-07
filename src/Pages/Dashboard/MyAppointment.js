@@ -32,6 +32,7 @@ const Mya = () => {
         .then((data) => setas(data));
     }
   }, [user]);
+  
   return (
     <div>
       <div class="overflow-x-auto">

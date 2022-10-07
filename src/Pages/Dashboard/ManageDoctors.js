@@ -11,7 +11,7 @@ const ManageDoctors = () => {
     isLoading,
     refetch,
   } = useQuery("doctors", () =>
-    fetch("http://localhost:5000/doctor", {
+    fetch("https://hidden-temple-24648.herokuapp.com/doctor", {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,7 +23,7 @@ const ManageDoctors = () => {
   }
   return (
     <div>
-      <h1>managedoctors {doctors.length} </h1>
+      <h1>Total Doctors {doctors?.length} </h1>
       <div class="overflow-x-auto">
         <table class="table w-full">
           <thead>
@@ -37,7 +37,7 @@ const ManageDoctors = () => {
           </thead>
 
           <tbody>
-            {doctors.map((doctor, index) => (
+            {doctors?.map((doctor, index) => (
               <DoctorRow
                 index={index}
                 refetch={refetch}

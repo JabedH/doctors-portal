@@ -23,11 +23,11 @@ import Payment from "./Pages/Dashboard/Payment";
 
 function App() {
   return (
-    <div className=" max-w-7x1 mx-auto px-12">
+    <div className="lg:max-w-7x1 mx-auto lg:px-12 px-5">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route
           path="/appointment"
           element={
@@ -45,8 +45,8 @@ function App() {
           }
         >
           <Route index element={<MyAppointment />}></Route>
-          <Route path="myreview" element={<MyReview />}></Route>
-          <Route path="myhistory" element={<MyHistory />}></Route>
+          {/* <Route path="myreview" element={<MyReview />}></Route>
+          <Route path="myhistory" element={<MyHistory />}></Route> */}
           <Route path="payment/:id" element={<Payment />}></Route>
           <Route
             path="allusers"

@@ -8,6 +8,7 @@ const Dashboard = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   console.log(admin);
+  
   return (
     <div class="drawer drawer-mobile">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -23,12 +24,12 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard">My Appointments</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/dashboard/myreview">My Reviews</Link>
           </li>
           <li>
             <Link to="/dashboard/myhistory">My History</Link>
-          </li>
+          </li> */}
           {admin && (
             <>
               <li>

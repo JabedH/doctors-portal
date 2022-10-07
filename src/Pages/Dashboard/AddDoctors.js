@@ -13,7 +13,9 @@ const AddDoctors = () => {
     reset,
   } = useForm();
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("http://localhost:5000/service").then((res) => res.json())
+    fetch("https://hidden-temple-24648.herokuapp.com/service").then((res) =>
+      res.json()
+    )
   );
   const onSubmit = async (data) => {
     const image = data.image[0];
@@ -34,7 +36,7 @@ const AddDoctors = () => {
           img: img,
         };
         // send to DB
-        fetch("http://localhost:5000/doctor", {
+        fetch("https://hidden-temple-24648.herokuapp.com/doctor", {
           method: "POST",
           headers: {
             "content-type": "application/json",

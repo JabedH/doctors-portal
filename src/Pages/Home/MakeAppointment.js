@@ -2,11 +2,12 @@ import React from "react";
 import doctor from "../../assets/images/doctor.png";
 import appointment from "../../assets/images/appointment.png";
 import Primarybtn from "../Shared/Navbar/Primarybtn";
+import { Link } from "react-router-dom";
 
 const MakeAppointment = () => {
   return (
     <section
-      className="mt-40 flex justify-center content-center items-center  text-white "
+      className="mt-40 p-5 flex justify-center content-center items-center  text-white "
       style={{
         background: `url(${appointment})`,
       }}
@@ -25,7 +26,9 @@ const MakeAppointment = () => {
           look like readable English. Many desktop publishing packages and web
           page
         </p>
-        <Primarybtn> Get Started </Primarybtn>
+        <Link to="/appointment">
+          <Primarybtn> Get Started </Primarybtn>
+        </Link>
       </div>
     </section>
   );

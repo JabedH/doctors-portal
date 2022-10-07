@@ -15,18 +15,18 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/about">About</Link>
-      </li>
+      </li> */}
       <li>
         <Link to="/appointment">Appointment</Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/reviews">Reviews</Link>
-      </li>
-      <li>
+      </li> */}
+      {/* <li>
         <Link to="/contact">ContactUs</Link>
-      </li>
+      </li> */}
       <li>{user ? <Link to="/dashboard">Dashboard</Link> : ""}</li>
       <li>
         {user ? (
@@ -61,15 +61,17 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex="0"
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 "
           >
             {MenuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Doctors Portal</a>
+        <Link to="/" className="btn btn-ghost hover:bg-[#0FCFEC] hover:text-white normal-case text-xl">
+          Doctors Portal
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex ">
-        <ul className="menu menu-horizontal p-0 ">{MenuItems}</ul>
+        <ul className="menu menu-horizontal p-0 gap-5 ">{MenuItems}</ul>
       </div>
       <div className="navbar-end  ">
         <label

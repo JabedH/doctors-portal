@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 const DeleteConfirmModal = ({ deleteDoctor, refetch, setDeleteDoctor }) => {
   const { name, email } = deleteDoctor;
   const handleDelete = () => {
-    fetch(`http://localhost:5000/doctor/${email}`, {
+    fetch(`https://hidden-temple-24648.herokuapp.com/doctor/${email}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -27,12 +27,9 @@ const DeleteConfirmModal = ({ deleteDoctor, refetch, setDeleteDoctor }) => {
       <div class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
           <h3 class="font-bold  text-red-500">
-            Are you sure you want to delete ${name}!
+            Are you sure you want to delete {name}!
           </h3>
-          <p class="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+
           <div class="modal-action">
             <button
               class="btn btn-xs  btn-error"
@@ -40,7 +37,10 @@ const DeleteConfirmModal = ({ deleteDoctor, refetch, setDeleteDoctor }) => {
             >
               Delete
             </button>
-            <label for="my-modal-6" class="btn btn-xs ">
+            <label
+              for="my-modal-6"
+              class="btn btn-xs bg-green-500 text-white border-0"
+            >
               Close
             </label>
           </div>
