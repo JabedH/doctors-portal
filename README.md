@@ -1,1 +1,1 @@
-https://doctors-portal-dc44f.web.app/
+https://github.com/JabedH/doctors-portal-server
